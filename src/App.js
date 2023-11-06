@@ -6,7 +6,21 @@ import {BsCheckLg} from "react-icons/bs"
 
 function App() {
   const [isCompleteScreen,setIsCompleteScreen] = useState(false);
+  const[allTodos,setTodos] = useState([]);
+  const[newTitle,setNewTitle] = useState("");
+  const[newDescription,setNewDescription] = useState("");
 
+
+  const handleAddTodo = () =>{
+    let newTodoItem = {
+      title:newTitle,
+      description:newDescription
+    }
+    let updateTodoArr = [...allTodos];
+    updatedTodoArr.push(newTodoItem)
+    setTodos(updateedTodoArr);
+
+  }
   return (
    <div className="App">
     <h1>My Todos</h1>
@@ -16,16 +30,16 @@ function App() {
           <div className="todo-input-item">
             
               <label>Title</label>
-              <input type= "text" placeholder="What is the task title?"b/>
+              <input type= "text" value= {newTitle} onChange={(e)=> setNewTitle(e.target)} placeholder="What is the task title?"b/>
           </div>
 
             <div className="todo-input-item">
               <label>Dexcription</label>
-              <input type= "text" placeholder="What is the task descriptipn?"/>
+              <input type= "text" value= {newDescription} onChange={(e)=> setNewDescription(e.target)} placeholder="What is the task descriptipn?"/>
             </div>
 
             <div className="todo-input-item">
-              <button type="button" className="primaryBtn">Add</button>
+              <button type="button" onClick={handleAddTodo} className="primaryBtn">Add</button>
             </div>
           </div>
 
